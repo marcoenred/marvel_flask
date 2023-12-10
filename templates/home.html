@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="{{url_for('static', filename='css/styles.css')}}">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+  <title>{% block title %}Marvel Chars With Flask {% endblock %}</title>
+
+</head>
+<body>
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <a href="buscar" class="navbar-brand">Buscar Personaje</a>
+
+    <a href="buscar_comic" class="navbar-brand">Buscar Comic</a>
+  </nav>
+
+  <h1>Marvel Chars</h1>
+  <h2>Informacion proveida por: 
+    <a class="marvel" href="http://marvel.com">
+      <strong >{{api_data.attributionText}}</strong>
+    </a>
+  </h2>
+
+  <div class="main">
+      {% for personaje in personajes %}
+    <div class="card">
+      <h3 class="name">{{personaje.name}}</h3>
+        <small>Id: {{personaje.id}}</small>
+      <p class="descripcion">
+        {{personaje.description | safe}}
+      </p>
+      <img class="thumbnail" src="{{personaje.thumbnail['path']}}.{{personaje.thumbnail['extension']}}" alt="{{personaje.name}}">
+    <p>
+      <strong>Comics disponibles: </strong> {{personaje.comics['available']}}
+    </p>
+    </div>
+      {% endfor %}
+  </div>
+  
+</body>
+</html>

@@ -1,0 +1,58 @@
+:root {
+/* CSS HEX */
+--platinum: #dce0d9ff;
+--dark-purple: #31081fff;
+--rosewood: #6b0f1aff;
+--davys-gray: #595959ff;
+--battleship-gray: #303632;
+
+/* CSS HSL */
+--platinum: hsla(94, 10%, 86%, 1);
+--dark-purple: hsla(326, 72%, 11%, 1);
+--rosewood: hsla(353, 75%, 24%, 1);
+--davys-gray: hsla(0, 0%, 35%, 1);
+
+
+body {
+  background-color: var(--davys-gray);
+  font-family: Helvetica;
+  color: var(--platinum)
+}
+
+.main {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+}
+
+.card {
+  padding: 5px;
+  background-color: var(--battleship-gray);
+}
+
+.name {
+  max-width: 350px;
+}
+.main .descripcion {
+  max-width: 380px;
+}
+
+.thumbnail {
+  width: 100%;
+  border-radius: 12px;
+}
+
+.card {
+  padding: 15px;
+}
+
+.marvel {
+  text-decoration: none;
+  color: var(--rosewood);
+}
+
+@media only screen and (max-width: 800px){
+  .main {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}

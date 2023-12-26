@@ -51,3 +51,17 @@ async def obtener_personajes():
                     return data
     except Exception as e:
         return f"Error{e}"
+
+
+async def buscar(starts, numero_personaje=3):
+    url = f"{URL_CONST}characters?nameStartsWith={starts}&limit={numero_personaje}&ts={ts}&apikey={public_key}&hash={hash_result}"
+    try:
+        async with aiohttp.ClientSession() as session:
+            async with session.get(url) as response:
+                if response.status == 200:
+                    data = await response.json()
+                    data = data['data']['results']
+                    print(data)
+                    return data
+    except Exception as e:
+        return  f"Error{e}"

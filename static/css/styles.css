@@ -1,23 +1,31 @@
-:root {
-/* CSS HEX */
---platinum: #dce0d9ff;
---dark-purple: #31081fff;
---rosewood: #6b0f1aff;
---davys-gray: #595959ff;
---battleship-gray: #303632;
-
-/* CSS HSL */
---platinum: hsla(94, 10%, 86%, 1);
---dark-purple: hsla(326, 72%, 11%, 1);
---rosewood: hsla(353, 75%, 24%, 1);
---davys-gray: hsla(0, 0%, 35%, 1);
-
-
 body {
-  background-color: var(--davys-gray);
+  background-color: #3e3e3e;
   font-family: Helvetica;
-  color: var(--platinum)
 }
+
+.navbar {
+padding: 0;
+    background-color: dodgerblue;
+    color: white;
+    width: 100%;
+
+    display: flex;
+    justify-content: center;
+}
+
+.navbar a {
+padding: 20px;
+text-decoration: none;
+color: white;
+transition: ease 0.2s;
+}
+
+.navbar a:hover {
+background-color: white;
+color: dodgerblue;
+
+}
+
 
 .main {
   display: grid;
@@ -27,7 +35,8 @@ body {
 
 .card {
   padding: 5px;
-  background-color: var(--battleship-gray);
+  background-color: #455e6d;
+  border-radius: 20px;
 }
 
 .name {
@@ -48,7 +57,7 @@ body {
 
 .marvel {
   text-decoration: none;
-  color: var(--rosewood);
+  color: #5a0707;
 }
 
 @media only screen and (max-width: 800px){
@@ -56,3 +65,43 @@ body {
     grid-template-columns: repeat(2, 1fr);
   }
 }
+@media only screen and (max-width: 500px){
+  .main {
+    grid-template-columns: repeat(1, 1fr);
+  }
+}
+
+form {
+    margin: 20px;
+    padding: 20px;
+    border: 1px sold #ccc;
+    border-radius: 5px;
+    background-color: #f8f8f8;
+}
+
+label {
+    display: block;
+    margin-bottom: 10px;
+}
+
+input[type="text"], input[type="number"] {
+    width: 200px;
+    padding: 5px;
+    margin-bottom: 10px;
+}
+
+input[type='number']{
+    width: 80px;
+}
+
+input[type='submit']{
+    background-color: #4caF50;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+}
+input[type="submit"]:hover {
+        background-color: #45a049;
+    }

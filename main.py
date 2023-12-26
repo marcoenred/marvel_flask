@@ -1,9 +1,9 @@
-from flask import Flask, render_template
-from api_requests import get_data, obtener_personajes
-import pprint
-
+from flask import Flask, render_template, request
+from api_requests import get_data, obtener_personajes, buscar
 
 app = Flask(__name__)
+
+app.template_folder = "templates"
 
 
 @app.route("/")
@@ -21,8 +21,22 @@ async def home():
         print(f"Error: {e}")
         return render_template("error.html", error_message=str(e))
 
-@app.route("/buscar")
-def buscar(starts, numero_personajes):
+# debido a que el backend usa una funcion
+# async entonces la peticion que se hace
+# aqui en el main tambien debe funcionar
+# con un asyn await
+@app.route("/buscar_personaje")
+async def buscar_personaje(): # Cambiar la funcion a async def
+    nombre_personaje = request.args.get("buscar_personaje")
+    numero_pesonajes = request.args.get("numero_personajes")
+    resultado = await buscar(nombre_personaje, numero_pesonajes) # Invocar con await
+    print(resultado)
+    return render_template("buscar_personaje.html", resultado=resultado)
+
+
+@app.route("/buscar_comic")
+def buscar_comic():
+    return render_template("buscar_comic.html")
 
 
 if __name__ == "__main__":

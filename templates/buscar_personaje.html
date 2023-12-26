@@ -22,10 +22,12 @@
 <div class="main">
     {% if resultado %}
     {% for item in resultado %}
-    <div class="card">
-        <h3>{{item.name}}</h3>
-        <img src="{{item.thumbnail['path']}}.{{item.thumbnail['extension']}}" alt="Imagen de {{item.name}}" class="thumbnail">
-    </div>
+    <a href="{{ url_for("/detalles_personaje") }}">
+        <div class="card">
+            <h3>{{item.name}}</h3>
+            <img src="{{item.thumbnail['path']}}.{{item.thumbnail['extension']}}" alt="Imagen de {{item.name}}" class="thumbnail">
+        </div>
+    </a>
     {% endfor %}
     {% endif %}
 </div>

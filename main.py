@@ -34,6 +34,12 @@ async def buscar_personaje(): # Cambiar la funcion a async def
     return render_template("buscar_personaje.html", resultado=resultado)
 
 
+@app.route("/detalles_personaje")
+async def personaje_id():
+    print('Hola Mundo')
+    return render_template("detalles_personaje.html")
+
+
 @app.route("/buscar_comic")
 def buscar_comic():
     return render_template("buscar_comic.html")

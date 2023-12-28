@@ -15,7 +15,6 @@ async def home():
 
         api_data = await obtener_personajes()
         personajes = api_data.get("data", {}).get('results', [])
-        print('data', api_data1.keys())
         return render_template("home.html",
                                api_data=api_data1, personajes=personajes)
     except Exception as e:
@@ -30,7 +29,6 @@ async def buscar_personaje(): # Cambiar la funcion a async def
     nombre_personaje = request.args.get("buscar_personaje")
     numero_pesonajes = request.args.get("numero_personajes")
     resultado = await buscar(nombre_personaje, numero_pesonajes) # Invocar con await
-    print(resultado)
     return render_template("buscar_personaje.html", resultado=resultado)
 
 
@@ -38,7 +36,6 @@ async def buscar_personaje(): # Cambiar la funcion a async def
 async def personaje_id_ruta(id): # Cambia el nombre de la funcion para evitar conclictos
     try:
         data = await personaje_id(id)  # llama a la funcion
-        print('data', data)
         return render_template("personaje.html", data=data)
     except Exception as e:
         return f"Error: {e}"

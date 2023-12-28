@@ -61,7 +61,6 @@ async def buscar(starts, numero_personaje=3):
                 if response.status == 200:
                     data = await response.json()
                     data = data['data']['results']
-                    print(data)
                     return data
     except Exception as e:
         return  f"Error{e}"
@@ -75,7 +74,6 @@ async def personaje_id(id):
                 if response.status == 200:
                     data = await response.json()
                     data = data['data']['results']
-                    print('data de backend', data)
                     return data
     except Exception as e:
         return  f"Error{e}"

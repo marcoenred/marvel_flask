@@ -1,7 +1,9 @@
-let usuario_input = document.getElementById("buscar_personaje");
+document.addEventListener("DOMContentLoaded", function() {
 
-usuario_input.addEventListener("input", () => {
-    var searchTerm = document.getElementById("buscar_personaje").value;
-})
+    let back = document.getElementById("back");
 
-console.log(usuario_input)
+    back.addEventListener("click", ()=> {
+            window.history.back();
+    });
+
+});

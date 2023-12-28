@@ -3,8 +3,23 @@
 <head>
     <meta charset="UTF-8">
     <title>Detalles</title>
+    <link rel="stylesheet" href="{{url_for('static', filename='css/styles.css')}}">
+
+    <title>{% block title %}Marvel Chars With Flask {% endblock %}</title>
+
 </head>
 <body>
+<nav class="navbar">
+    <a href="/buscar_personaje" class="navbar-brand">Buscar Personaje</a>
+    <a href="/buscar_comic" class="navbar-brand">Buscar Comic</a>
+</nav>
+
+<h1>Marvel Chars</h1>
+<h2>Informacion proveida por:
+    <a class="marvel" href="http://marvel.com">
+        <strong >{{api_data.attributionText}}</strong>
+    </a>
+</h2>
 <h1>Hola Mundo</h1>
 
 </body>

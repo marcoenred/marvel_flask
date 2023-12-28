@@ -34,9 +34,31 @@ color: dodgerblue;
 }
 
 .card {
-  padding: 5px;
   background-color: #455e6d;
   border-radius: 20px;
+  height: inherit;
+  padding: 15px;
+}
+
+.card:hover {
+    filter: drop-shadow(0 0 2px white);
+}
+
+.back {
+    font-size: 18px;
+    cursor: pointer;
+    padding: 10px;
+    background-color: dodgerblue;
+    color: white;
+    transition: ease in;
+    width: 150px;
+    border-radius: 12px;
+    text-align: center;
+}
+
+.back:hover {
+    color: black;
+    background-color: red;
 }
 
 .name {
@@ -49,10 +71,6 @@ color: dodgerblue;
 .thumbnail {
   width: 100%;
   border-radius: 12px;
-}
-
-.card {
-  padding: 15px;
 }
 
 .marvel {
@@ -68,6 +86,9 @@ color: dodgerblue;
 @media only screen and (max-width: 500px){
   .main {
     grid-template-columns: repeat(1, 1fr);
+  }
+  .navbar {
+    flex-direction: column;
   }
 }
 
@@ -85,13 +106,29 @@ label {
 }
 
 input[type="text"], input[type="number"] {
-    width: 200px;
+    max-width: 200px;
+    width: 100%;
     padding: 5px;
     margin-bottom: 10px;
 }
 
 input[type='number']{
     width: 80px;
+}
+.personaje_image {
+    max-width: 100%;
+    border-radius: 20px;
+    display: block;
+    margin: 0 auto;
+}
+.personaje_descripcion {
+    text-align: center;
+    padding: 20px;
+    background-color: rgba(0, 0, 0,.6);
+    color: white;
+    max-width: 500px;
+    margin: 20px auto;
+    border-radius: 12px;
 }
 
 input[type='submit']{
@@ -105,3 +142,7 @@ input[type='submit']{
 input[type="submit"]:hover {
         background-color: #45a049;
     }
+.linkPersonaje, .linkPersonaje h3 {
+    text-decoration: none;
+    color: black;
+}

@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <link rel="stylesheet" href="{{url_for('static', filename='css/styles.css')}}">
+    <script src="{{ url_for('static', filename='scripts.js') }}"></script>
     <title>Buscar Por Personaje</title>
 </head>
 <body>
@@ -15,15 +16,18 @@
 <form method="get">
     <label for="buscar_personaje">Buscar Personaje: </label>
     <input type="text" name="buscar_personaje" id="buscar_personaje" placeholder="Nombre del personaje">
-    <input type="number" name="numero_personajes" id="numero_personajes" placeholder="Numero de personajes">
+    <label for="numero_personajes">Ingresa un numero (ejemplo 1)</label>
+    <input type="number" name="numero_personajes" id="numero_personajes" value="1" placeholder="Numero de personajes">
     <input type="submit" value="Buscar">
+    <div id="back" class="back"> REGRESAR </div>
 </form>
 
 <div class="main">
     {% if resultado %}
     {% for item in resultado %}
-    <a href="{{ url_for("/detalles_personaje") }}">
+    <a class="linkPersonaje" href="{{ url_for("personaje_id_ruta", id=item['id']) }}">
         <div class="card">
+            <small>Id del personaje: {{item.id}}</small>
             <h3>{{item.name}}</h3>
             <img src="{{item.thumbnail['path']}}.{{item.thumbnail['extension']}}" alt="Imagen de {{item.name}}" class="thumbnail">
         </div>

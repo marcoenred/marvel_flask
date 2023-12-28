@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="{{url_for('static', filename='css/styles.css')}}">
+    <script src="{{ url_for('static', filename='scripts.js') }}"></script>
+
+    <title>Pesonaje de Marvel</title>
+</head>
+<body>
+{% extends "base.html" %}
+
+{% block content %}
+    {% for item in data %}
+        <h2>{{item['name']}}</h2>
+        <img class="personaje_image" src="{{item.thumbnail['path']}}.{{item.thumbnail['extension']}}">
+        <div id="back" class="back"> REGRESAR </div>
+            {% if item['description'] != '' %}
+                <p class="personaje_descripcion">Descripcion: {{item['description']}}</p>
+            {% endif %}
+    <p>Comics disponibles: {{item['comics']['available']}}</p>
+        {% if item['comics']['available'] > 0 %}
+            <h3>Algunos comics de {{item['name']}}</h3>
+        {% endif %}
+                {% for comic in item['comics']['items'][:10] %}
+            <p>{{comic['name']}} - <small>{{comic['resourceURI']}}</small> </p>
+    {% endfor %}
+    {% endfor %}
+{% endblock %}
+
+</body>
+</html>

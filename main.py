@@ -1,8 +1,9 @@
 from flask import Flask, render_template, request
-from api_requests import get_data, obtener_personajes, buscar
+from api_requests import get_data, obtener_personajes, buscar, personaje_id
 
 app = Flask(__name__)
 
+app = Flask(__name__, static_folder='static')
 app.template_folder = "templates"
 
 
@@ -20,7 +21,6 @@ async def home():
     except Exception as e:
         print(f"Error: {e}")
         return render_template("error.html", error_message=str(e))
-
 # debido a que el backend usa una funcion
 # async entonces la peticion que se hace
 # aqui en el main tambien debe funcionar
@@ -34,10 +34,15 @@ async def buscar_personaje(): # Cambiar la funcion a async def
     return render_template("buscar_personaje.html", resultado=resultado)
 
 
-@app.route("/detalles_personaje")
-async def personaje_id():
-    print('Hola Mundo')
-    return render_template("detalles_personaje.html")
+@app.route("/personaje/<int:id>") # Define la ruta
+async def personaje_id_ruta(id): # Cambia el nombre de la funcion para evitar conclictos
+    try:
+        data = await personaje_id(id)  # llama a la funcion
+        print('data', data)
+        return render_template("personaje.html", data=data)
+    except Exception as e:
+        return f"Error: {e}"
+
 
 
 @app.route("/buscar_comic")
